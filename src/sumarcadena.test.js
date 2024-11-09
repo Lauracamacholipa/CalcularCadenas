@@ -10,4 +10,7 @@ describe("Sumar cadenas", () => {
     it("Si hay una cadena de un un numero mayor a 1000 deveria ignorar este numero", () => {
         expect(calcularCadena("2000")).toEqual(0);
     });
+    it("Si hay una cadena con el delimitador (,) se debería mostrar la suma de los números.", () => {
+        expect(calcularCadena("3,2")).toEqual(5);
+    });
 });
