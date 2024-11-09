@@ -17,5 +17,11 @@ describe("Sumador", () => {
       cy.get("#calculadora-button").click();
       cy.get("#resultado-div").should("contain", 150);
     });
+    it("Cuando ingrese una cadena y ponga otros delimitadores aparte de (, o -), solo sumara los numero que tienen los delimitadores establecidos.", () => {
+      cy.visit("/");
+      cy.get("#cadena").type("20,50*70-10*9");
+      cy.get("#calculadora-button").click();
+      cy.get("#resultado-div").should("contain", 80);
+    });
   });
   
