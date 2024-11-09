@@ -13,4 +13,7 @@ describe("Sumar cadenas", () => {
     it("Si hay una cadena con el delimitador (,) se debería mostrar la suma de los números.", () => {
         expect(calcularCadena("3,2")).toEqual(5);
     });
+    it("Si hay una cadena con el delimitador (-) se debería mostrar la suma de los números.", () => {
+        expect(calcularCadena("8-2")).toEqual(10);
+    });
 });
