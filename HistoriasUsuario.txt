@@ -5,6 +5,8 @@ Como: usuario
 Quiero: poder realizar el cálculo de una operación con números en una cadena con diferentes delimitadores
 Para: obtener la suma de los números en la cadena
 Criterios de confirmacion:
+- Cuando no ingrese ningún número y presione el botón calcular, se debería mostrar 0 como resultado.
+- Cuando ingrese números mayores a 1000, estos deben ser ignorados en el cálculo.
 - Cuando ingrese una cadena delimitadores establecidos (, o -) y presione el botón calcular, 
   se debería mostrar la suma de los números.
 - Cuando ingrese una cadena y ponga otros delimitadores aparte de (, o -), 
@@ -13,5 +15,3 @@ Criterios de confirmacion:
   se deberá mostrar la suma de los números que contenga ese delimitador.
 - Cuando ingrese una cadena con dos delimitadores personalizados (//[][]) y presione el botón calcular,
   se deberá mostrar la suma de los números que contenga esos delimitador.
-- Cuando ingrese números mayores a 1000, estos deben ser ignorados en el cálculo.
-- Cuando no ingrese ningún número y presione el botón calcular, se debería mostrar 0 como resultado.
