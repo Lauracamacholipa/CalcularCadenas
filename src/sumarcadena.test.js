@@ -19,4 +19,7 @@ describe("Sumar cadenas", () => {
     it("Si hay una cadena con los delimitadores establecidos (, o -) se debería mostrar la suma de los números.", () => {
         expect(calcularCadena("5-8,19")).toEqual(32);
     });
+    it("Si hay una cadena otros simbolos en vez de (, o -) se ignorara los numeros a la izquierda de estos simbolos raros en la suma", () => {
+        expect(calcularCadena("79*5+42-1")).toEqual(80);
+    });
 });
