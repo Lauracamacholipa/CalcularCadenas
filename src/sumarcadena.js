@@ -4,7 +4,8 @@ function calcularCadena(cadena) {
     }
 
     const numeros = cadena.split(",").map(Number);
-    return numeros.reduce((acc, num) => acc + num, 0);
+    const numerosFiltrados = numeros.filter(num => num <= 1000);
+    return numerosFiltrados.reduce((acc, num) => acc + num, 0);
   }
   
   export default calcularCadena;

@@ -7,4 +7,7 @@ describe("Sumar cadenas", () => {
     it("Si hay una cadena de un solo numero deberia devolver el mismo numero", () => {
         expect(calcularCadena("100")).toEqual(100);
     });
+    it("Si hay una cadena de un un numero mayor a 1000 deveria ignorar este numero", () => {
+        expect(calcularCadena("2000")).toEqual(0);
+    });
 });
