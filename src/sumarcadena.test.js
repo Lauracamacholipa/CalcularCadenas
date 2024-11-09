@@ -22,4 +22,7 @@ describe("Sumar cadenas", () => {
     it("Si hay una cadena otros simbolos en vez de (, o -) se ignorara los numeros a la izquierda de estos simbolos raros en la suma", () => {
         expect(calcularCadena("79*5+42-1")).toEqual(80);
     });
+    it("Si hay una cadena otros simbolos en vez de (, o -) se ignorara los numeros a la izquierda de estos simbolos raros en la suma", () => {
+        expect(calcularCadena("//[***] 2***3")).toEqual(5); 
+    });
 });
