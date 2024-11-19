@@ -29,5 +29,11 @@ describe("Sumador", () => {
       cy.get("#calculadora-button").click();
       cy.get("#resultado-div").should("contain", 10);
     });
+    it("Cuando ingrese una cadena con (//[][]) se deberá mostrar la suma de los números que contenga esos delimitadores.", () => {
+      cy.visit("/");
+      cy.get("#cadena").type("//[**][+]6**4+5+3");
+      cy.get("#calculadora-button").click();
+      cy.get("#resultado-div").should("contain", 18);
+    });
   });
   

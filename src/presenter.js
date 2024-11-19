@@ -1,4 +1,4 @@
-import calcularCadena from "./sumarcadena.js"
+import calcularSumaDeCadena from "./sumarcadena.js"
 
 const cadena = document.querySelector("#cadena");
 const form = document.querySelector("#sumar-form");
@@ -8,5 +8,5 @@ form.addEventListener("submit", (event) => {
   event.preventDefault();
 
   const cadenaUsr = cadena.value;
-  div.innerHTML = "<p>" + calcularCadena(cadenaUsr) + "</p>";
+  div.innerHTML = "<p>" + calcularSumaDeCadena(cadenaUsr) + "</p>";
 });

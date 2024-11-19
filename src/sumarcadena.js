@@ -1,40 +1,46 @@
-function procesarDelimitadorPersonalizado(cadena, delimitadores) {
-  const regex = new RegExp(delimitadores.map(d => d.replace(/[.*+?^=!:${}()|\[\]\/\\]/g, "\\$&")).join('|'), 'g');
-  const numeros = cadena.split(regex).map(Number);
-  return numeros.filter(num => !isNaN(num) && num <= 1000).reduce((acc, num) => acc + num, 0);
+function sumarConDelimitadoresPersonalizados(cadena, delimitadores) {
+  const delimitadoresEscapados = delimitadores.map(delimitador =>
+    delimitador.replace(/[.*+?^=!:${}()|\[\]\/\\]/g, "\\$&")
+  );
+  const regexDelimitadores = new RegExp(delimitadoresEscapados.join('|'), 'g');
+  const numeros = cadena.split(regexDelimitadores).map(Number);
+  
+  return numeros
+    .filter(numero => !isNaN(numero) && numero <= 1000)
+    .reduce((total, numero) => total + numero, 0);
 }
 
-function procesarDelimitadoresEstándar(cadena) {
+function sumarConDelimitadoresEstandar(cadena) {
   const partes = cadena.split(/,|-/);
-  let suma = 0;
+  let sumaTotal = 0;
 
   partes.forEach(parte => {
-    let numero = parte.split(/[^0-9]+/)[0];
-    numero = Number(numero);
+    const numeroExtraido = Number(parte.split(/[^0-9]+/)[0]);
 
-    if (!isNaN(numero) && numero <= 1000) {
-      suma += numero;
+    if (!isNaN(numeroExtraido) && numeroExtraido <= 1000) {
+      sumaTotal += numeroExtraido;
     }
   });
 
-  return suma;
+  return sumaTotal;
 }
 
-function calcularCadena(cadena) {
+function calcularSumaDeCadena(cadena) {
   if (!cadena) return 0;
 
   if (cadena.startsWith("//[")) {
-    const match = cadena.match(/^\/\/\[(.*?)\]/);
-    if (match) {
-      const delimitadores = match[1]
-        .split('][')  
-        .map(d => d.trim())  
-        .filter(d => d.length > 0); 
-      cadena = cadena.substring(match[0].length); 
-      return procesarDelimitadorPersonalizado(cadena, delimitadores);
+    const coincidenciaDelimitadores = cadena.match(/^\/\/(\[.*?\])+/);
+    
+    if (coincidenciaDelimitadores) {
+      const delimitadoresPersonalizados = [...cadena.matchAll(/\[(.+?)\]/g)]
+        .map(match => match[1]); 
+
+      const cadenaNumeros = cadena.substring(coincidenciaDelimitadores[0].length);
+      return sumarConDelimitadoresPersonalizados(cadenaNumeros, delimitadoresPersonalizados);
     }
   }
-  return procesarDelimitadoresEstándar(cadena);
+
+  return sumarConDelimitadoresEstandar(cadena);
 }
 
-export default calcularCadena;
+export default calcularSumaDeCadena;
